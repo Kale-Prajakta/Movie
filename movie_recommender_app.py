@@ -9,7 +9,7 @@ from sklearn.preprocessing import StandardScaler
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-st.set_option('deprecation.showPyplotGlobalUse', False)
+
 
 # Load data
 movies = pd.read_csv('movies.csv')
