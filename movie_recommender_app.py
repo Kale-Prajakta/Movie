@@ -23,8 +23,9 @@ movies['num_genres'] = movies['genres'].apply(lambda x: len(x.split()) if pd.not
 
 # Display genre distribution
 st.subheader("Distribution of Number of Genres")
-sns.histplot(movies['num_genres'], bins=20)
-st.pyplot()
+fig1, ax1 = plt.subplots()
+sns.histplot(movies['num_genres'], bins=20, ax=ax1)
+st.pyplot(fig1)
 
 # TF-IDF + average rating
 tfidf = TfidfVectorizer()
@@ -50,8 +51,10 @@ movies['Cluster'] = clusters
 
 # Plot clusters
 st.subheader("PCA Clustering of Movies")
-plt.scatter(pca_features[:, 0], pca_features[:, 1], c=clusters, cmap='tab10')
-st.pyplot()
+fig2, ax2 = plt.subplots()
+scatter = ax2.scatter(pca_features[:, 0], pca_features[:, 1], c=clusters, cmap='tab10')
+ax2.set_title("PCA Clustering of Movies")
+st.pyplot(fig2)
 
 # Cosine similarity
 cos_sim = cosine_similarity(tfidf_matrix)
